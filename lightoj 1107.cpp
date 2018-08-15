@@ -1,34 +1,36 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
-int x1,y1,x2,y2;
-
-bool chkbound(int x,int y)
-{
-    return (x1<x && y1<y && x<x2 && y<y2);
-    return 0;
-}
-
 int main()
 {
-    int n,x,y,t,tt;
+    int t,cs=0;
 
-    cin>>tt;
+    cin>>t;
 
-    for(t=1;t<=tt;t++)
+    int n,i,a,b,c,mx,tmp;
+
+    while(t--)
     {
+        cout<<"Case "<<++cs<<":"<<endl;
+        int x1,y1,x2,y2,x,y;
         cin>>x1>>y1>>x2>>y2;
 
-        cout<<"Case "<<t<<":"<<endl;
-
         cin>>n;
+
         while(n--)
         {
             cin>>x>>y;
+            if(x1<x && x<x2 && y1<y &&y<y2 )
+                cout<<"Yes"<<endl;
+            else
+                cout<<"No"<<endl;
 
-            if(chkbound(x,y)) cout<<"Yes"<<endl;
-            else cout<<"No"<<endl;
         }
+
+
+
     }
+
     return 0;
 }
