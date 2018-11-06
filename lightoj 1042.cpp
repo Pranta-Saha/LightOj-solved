@@ -1,5 +1,6 @@
-#include<bits/stdc++.h>
+#include "bits/stdc++.h"
 using namespace std;
+
 
 int binaryToDecimal(string n)
 {
@@ -23,7 +24,7 @@ int binaryToDecimal(string n)
     return dec_value;
 }
 
-// function to convert decimal to binary string form
+
 string decToBinary(int n)
 {
     string str="";
@@ -41,78 +42,30 @@ string decToBinary(int n)
     return str;
 }
 
-int onoroy(int n)
-{
-    int cnt0=0,j,k;
-    string str=decToBinary(n);
-    size_t len=str.size();
-    size_t ptr1=str.find('0'),ptr;
-
-    if(__builtin_popcount(n)==len)
-        str.insert(str.begin()+1,'0');
-    else
-    {
-
-        if( str.find('1',ptr1)==string::npos)
-        {
-            str.insert(str.begin()+1,'0');
-                //cout<<"#"<<str;
-            len=str.size();
-            for(k=2;k<len;k++)
-                if(str[k]=='0')
-                    cnt0++;
-            for(k=2;k<=1+cnt0;k++)
-                str[k]='0';
-            for(k;k<len;k++)
-                str[k]='1';
-
-        }
-        else
-        {
-
-            ptr=str.rfind("1");
-            for(j=ptr;j>=0;j--)
-            {
-                if(str[j]=='0')
-                {
-                    str[j]='1';
-                    str[ptr]='0';
-
-                    for(k=j+1;k<len;k++)
-                        if(str[k]=='0')
-                            cnt0++;
-                    for(k=j+1;k<=j+cnt0;k++)
-                        str[k]='0';
-                    for(k;k<len;k++)
-                        str[k]='1';
-                    break;
-                }
-            }
-        }
-
-    }
-
-
-
-return binaryToDecimal(str);
-
-}
 
 int main()
 {
-    int t,cs=0;
-
+    int n,t,tt=0;
     cin>>t;
-
-    int n,i,a,b,c,mx,tmp;
-
     while(t--)
     {
         cin>>n;
+        string str=decToBinary(n);
+        str='0'+str;
+        vector<int>vec;
 
+        for(int i=0;i<str.size();i++)
+            vec.push_back(str[i]-'0');
 
-        cout<<"Case "<<++cs<<": "<< onoroy(n)<<endl;
+        next_permutation(vec.begin(),vec.end());
+        str="";
+
+        for(int i=0;i<vec.size();i++)
+        {
+            str.push_back((char)(vec[i]+'0'));
+        }
+        cout<<"Case "<<++tt<<": "<<binaryToDecimal(str)<<endl;
     }
 
-    return 0;
+	return 0;
 }
