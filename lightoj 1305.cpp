@@ -1,33 +1,31 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-    int n,m,i,j,cnt(0),tmpx,tmpy,xpos,ypos,x,y,t=0,tt,sum(0),tmp,lo,hi,mid,mx,mn;
+//freopen("in.txt","r",stdin);
+    //ios_base::sync_with_stdio(false);cin.tie(NULL);
+    int n,i,j,t,tt=0;
+    cin>>t;
 
-    double x1,y1,x2,y2,x3,y3,x4,y4,xm,ym,v;
-
-    cin>>tt;
-
-    while((++t)<=tt)
+    while(t--)
     {
-        cin>>x1>>y1>>x2>>y2>>x3>>y3;
+        double ox,oy,ax,ay,bx,by,cx,cy,dx,dy,area;
+        cin>>ax>>ay>>bx>>by>>cx>>cy;
+        ox=(ax+cx)/2.0;
+        oy=(ay+cy)/2.0;
 
-        xm=(x1+x3)/2.0;
-        ym=(y1+y3)/2.0;
+        dx=(2.0*ox)-bx;
+        dy=(2.0*oy)-by;
 
-        x4=(2.0*xm)-x2;
-        y4=(2.0*ym)-y2;
-
-        v=0.5*(((x1*y2)+(x2*y3)+(x3*y4)+(x4*y1))-((y1*x2)+(y2*x3)+(y3*x4)+(y4*x1)));
-
-        cout<<"Case "<<t<<": "<<(int)x4<<" "<<(int)y4<<" "<<abs((int)v)<<endl;
+        area= (ax*by) + (bx*cy) + (cx*dy) + (dx*ay) - (ay*bx) - (by*cx) - (cy*dx) -(dy*ax);
 
 
+        cout<<"Case "<<++tt<<": "<<(int)dx<<" "<<(int)dy<<" "<<(int)abs(area/2.0)<<endl;
 
     }
 
 
-
-    return 0;
+	return 0;
 }
+
